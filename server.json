@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Robert",
+      "book": "ReactJS",
+      "price": "2222"
+    },
+    {
+      "id": 2,
+      "name": "Antonio",
+      "book": "MongoDB",
+      "price": "3333"
+    },
+    {
+      "id": 3,
+      "name": "Rodrigo",
+      "book": "VanillaJS",
+      "price": "5555"
+    },
+    {
+      "id": 4,
+      "name": "Dalva",
+      "book": "CSS",
+      "price": "6666"
+    }
+  ]
+}
