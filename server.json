@@ -2,7 +2,7 @@
   "data": [
     {
       "id": 1,
-      "name": "Robert",
+      "name": "Marina",
       "book": "ReactJS",
       "price": "2222"
     },
@@ -23,6 +23,12 @@
       "name": "Dalva",
       "book": "CSS",
       "price": "6666"
+    },
+    {
+      "id": 4,
+      "name": "Raisa",
+      "book": "React Native",
+      "price": "4545"
     }
   ]
 }

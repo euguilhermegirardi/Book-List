@@ -11,7 +11,7 @@ const TableHead = () => {
       </tr>
     </thead>
   );
-}
+};
 
 const TableBody = props => {
     const lines = props.authors.map((line, index) => {
@@ -30,13 +30,11 @@ const TableBody = props => {
         { lines }
       </tbody>
     );
-}
+};
 
 class Tabela extends Component {
   render() {
-
     const { authors, removeAuthor } = this.props;
-    //console.log(authors);
 
     return (
       <table className="centered highlight">
@@ -45,6 +43,6 @@ class Tabela extends Component {
       </table>
     );
   }
-}
+};
 
 export default Tabela;

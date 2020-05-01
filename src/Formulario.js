@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import FormValidator from './FormValidator';
 import PopUp from "./PopUp";
+import './App.css';
 
 class Formulario extends Component {
 
   constructor(props) {
     super(props);
 
-    //
     this.validator = new FormValidator([
       {
       field: 'name',
@@ -45,7 +45,7 @@ class Formulario extends Component {
     this.setState({
       [name]: value
     });
-  }
+  };
 
   submitForm = () => {
     const validation = this.validator.validates(this.state);
@@ -63,7 +63,7 @@ class Formulario extends Component {
         PopUp.showMessage('error', field.message)
       })
     }
-  }
+  };
 
   render() {
     const { name, book, price } = this.state;

@@ -17,24 +17,23 @@ class App extends Component {
     };
   }
 
-
-
   removeAuthor = (index) => {
     const { authors } = this.state;
 
     this.setState(
       {
-        authors: authors.filter((autor, posAtual) => {
-          console.log(index, posAtual)
-          return posAtual !== index;
+        authors: authors.filter((author, posAtual) => {
+          console.log(index, posAtual);
+          // return those who the posAtual is different from the index, which was clicked (removed).
+          return posAtual !==  index;
         }),
       }
     );
     PopUp.showMessage('error', 'Author removed!');
   }
 
-  submitListener = autor => {
-    this.setState({ authors: [...this.state.authors, autor] });
+  submitListener = author => {
+    this.setState({ authors: [...this.state.authors, author] });
     PopUp.showMessage('success', 'Author added');
   }
 
@@ -46,10 +45,6 @@ class App extends Component {
   }
 
   render() {
-    //TEST
-    // ApiService.ListName()
-    // .then(res => console.log(res))
-
     return (
       <Fragment>
         <Header/>
