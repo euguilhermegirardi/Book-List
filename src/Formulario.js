@@ -13,20 +13,20 @@ class Formulario extends Component {
       field: 'name',
       method: 'isEmpty',
       validWhen: false,
-      message: 'Type a name'
+      message: 'Type a name.'
       },
       {
         field: 'book',
         method: 'isEmpty',
         validWhen: false,
-        message: 'Type a book'
+        message: 'Type a book.'
       },
       {
         field: 'price',
         method: 'isInt',
         args: [{ min: 0, max: 9999 }],
         validWhen: true,
-        message: 'Type a price'
+        message: 'Type a valid number between 0 and 9999.'
       },
     ]);
 
@@ -34,8 +34,8 @@ class Formulario extends Component {
       name: '',
       book: '',
       price: '',
-      validation: this.validator.valid()
-    }
+      validation: this.validator.validRules()
+    };
 
     this.state = this.stateInicial;
   }
@@ -48,21 +48,27 @@ class Formulario extends Component {
   };
 
   submitForm = () => {
-    const validation = this.validator.validates(this.state);
+    const submitValidation = this.validator.toValidation(this.state);
 
-    if (validation.isValid) {
+    if (submitValidation.isValid) {
       this.props.submitListener(this.state);
       this.setState(this.stateInicial);
     } else {
-      const { name, book, price } = validation;
+      // If it's invalid...
+      // get the items first.
+      const { name, book, price } = submitValidation;
+
+      // transform the items into an array.
       const field = [name, book, price];
+
+      // get the invalid items.
       const invalidFields = field.filter(el => {
         return el.isInvalid;
       });
       invalidFields.forEach(field => {
         PopUp.showMessage('error', field.message)
-      })
-    }
+      });
+    };
   };
 
   render() {

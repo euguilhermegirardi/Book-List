@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; // Is allowed to style the element.
 
 const LinkWrapper = props => {
   return (
-    // to={props.to}
     <NavLink activeStyle={{fontWeight: 'bold'}} {...props}/>
   );
 }

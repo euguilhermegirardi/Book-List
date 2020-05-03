@@ -15,10 +15,9 @@ const DataTable = props => {
             <th>{props.title}</th>
           </tr>
         </thead>
-        <tbody>
-          {lines}
-        </tbody>
+        <tbody>{lines}</tbody>
       </table>
-    )
-}
+    );
+};
+
 export default DataTable;

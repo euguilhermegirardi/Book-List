@@ -3,43 +3,50 @@ import validator from 'validator';
 class FormValidator {
 
   // Receive the 'new FormValidator'.
-  constructor(validations) {
-    this.validations = validations;
+  constructor(rules) {
+    // Receives an array of objects from the new FormValidator.
+    this.rules = rules;
   }
 
-  validates(state) {
-    let validation = this.valid();
+  // How the validation works.
+  toValidation(state) {
+    let toVerification = this.validRules();
 
-    this.validations.forEach(rule => {
-      // Recovering the info from 'new FormValidator'.
+    // forEach() in the rules from the new FormValidator
+    this.rules.forEach(rule => {
+
+      // 'field' from 'new FormValidator'.
       const fieldPrice = state[rule.field.toString()];
+
+      // Recovering the args from the rules in new FormValidator.
       const args = rule.args || [];
-      // Recovering the method that is 'empty' in 'new FormValidator'.
+
+      // 'method' from the 'validator' and check if it's empty from the 'new FormValidator'.
       const methodValidation = typeof rule.method === 'string' ?
-      validator[rule.method] : rule.method
+      validator[rule.method] : rule.method;
 
       // After recover the item, it must be validated.
       if (methodValidation(fieldPrice, ...args, state) !== rule.validWhen) {
-
-        validation[rule.field] = {
+        toVerification[rule.field] = {
           isInvalid: true,
           message: rule.message
         }
-        validation.isValid = false;
+        toVerification.isValid = false;
       }
     });
+    return toVerification;
+  };
 
-    return validation;
-  }
+  // Returns the valid rules to the Form.
+  validRules() {
+    const validation = {};
 
-  valid() {
-    const validation = {}
-
-    this.validations.map(rule => (
+    // map() the rules in the 'new FormValidator'.
+    this.rules.map(rule => (
       validation[rule.field] = { isInvalid: false, message: '' }
     ));
     return { isValid: true, ...validation };
-  }
+  };
 }
 
 export default FormValidator;

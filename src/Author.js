@@ -31,7 +31,8 @@ class Author extends Component {
       ],
       title: 'Authors'
     };
-  }
+  };
+
   render() {
     return (
       <Fragment>

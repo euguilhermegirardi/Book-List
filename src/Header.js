@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <nav>
       <div className="nav-wrapper indigo darken-2">
-        <LinkWrapper to="/" className="brand-logo activeStyle={{}}">Exercise One</LinkWrapper>
+        <LinkWrapper to="/" className="brand-logo" activeStyle={{}}>Exercise One</LinkWrapper>
         <ul className="right">
           <li><LinkWrapper to="/author">Author</LinkWrapper></li>
           <li><LinkWrapper to="/books">Books</LinkWrapper></li>

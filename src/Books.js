@@ -31,7 +31,8 @@ class Books extends Component {
       ],
       title: 'Books'
     };
-  }
+  };
+
   render() {
     return (
       <Fragment>
