@@ -56,7 +56,6 @@ class App extends Component {
       </Fragment>
     );
   }
-
 }
 
 export default App;

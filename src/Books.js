@@ -1,36 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import Header from './Header';
-import DataTable from './DataTable';
+import DataBooks from './DataBooks';
+import ApiService from './ApiService';
 
 class Books extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      authors: [
-        {
-          name: 'Paulo',
-          book: 'React',
-          price: '1000'
-        },
-        {
-          name: 'Daniel',
-          book: 'React Native',
-          price: '1000'
-        },
-        {
-          name: 'Marcos',
-          book: 'Node.js',
-          price: '1000'
-        },
-        {
-          name: 'Girardi',
-          book: 'CSS + JS',
-          price: '999'
-        }
-      ],
-      title: 'Books'
+      authors: [],
     };
+  };
+
+  componentDidMount() {
+    ApiService.AuthorList()
+      .then(res => {
+        this.setState({authors: [...this.state.authors, ...res]})
+      });
   };
 
   render() {
@@ -39,11 +25,11 @@ class Books extends Component {
         <Header />
         <div className='container'>
           <h1>Books</h1>
-          <DataTable data={this.state.authors} title={this.state.title} columns={['book']} />
+          <DataBooks data={this.state.authors} />
         </div>
       </Fragment>
     )
   }
-}
+};
 
 export default Books;
