@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Author from './Author';
-import Books from './Books';
-import About from './About';
-import NotFound from './NotFound';
+import Author from './Pages/Authors/Author';
+import Books from './Pages/Books/Books';
+import About from './Pages/About/About';
+import NotFound from './Pages/NotFound/NotFound';
 
 ReactDOM.render(
   <BrowserRouter>

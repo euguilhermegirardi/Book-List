@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Header from './Header';
-import DataAuthors from './DataAuthors';
-import ApiService from './ApiService';
+import Header from '../../Components/Header/Header';
+import DataList from '../../Components/DataList/DataList';
+import ApiService from '../../API/ApiService';
 
 class Author extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Author extends Component {
         <Header />
         <div className='container'>
           <h1>Authors</h1>
-          <DataAuthors data={this.state.authors} />
+          <DataList data={this.state.authors} title={this.state.title} column={['name']}/>
         </div>
       </Fragment>
     )

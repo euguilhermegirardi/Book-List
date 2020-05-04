@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
-import Header from './Header';
-import Tabela from './Tabela';
-import Form from './Formulario';
-import PopUp from "./PopUp";
-import ApiService from './ApiService';
+import Header from './Components/Header/Header';
+import Tabela from './Components/Table/Tabela';
+import Form from './Components/Form/Formulario';
+import PopUp from "./Utils/PopUp";
+import ApiService from './API/ApiService';
 
 class App extends Component {
 
@@ -15,34 +15,41 @@ class App extends Component {
     this.state = {
       authors: [],
     };
-  }
+  };
 
-  removeAuthor = (index) => {
+  removeAuthor = id => {
     const { authors } = this.state;
 
     this.setState(
       {
-        authors: authors.filter((author, posAtual) => {
-          console.log(index, posAtual);
-          // return those who the posAtual is different from the index, which was clicked (removed).
-          return posAtual !==  index;
-        }),
+        authors: authors.filter((author) => {
+          // return those who the id is different from the id which was clicked (removed).
+          return author.id !== id;
+        })
       }
     );
     PopUp.showMessage('error', 'Author removed!');
-  }
+    ApiService.RemoveAuthor(id);
+  };
 
   submitListener = author => {
-    this.setState({ authors: [...this.state.authors, author] });
-    PopUp.showMessage('success', 'Author added');
-  }
+    ApiService.CreateAuthor(JSON.stringify(author))
+              .then(res => res)
+              .then(author => {
+                this.setState({ authors: [...this.state.authors, author] });
+                PopUp.showMessage('success', 'Author added');
 
+              })
+              .catch(err => PopUp.showMessage('error', 'Something went wrong with SubmitListener.'));
+  };
+
+  // Called just after the component is built
   componentDidMount() {
     ApiService.AuthorList()
-      .then(res => {
-        this.setState({authors: [...this.state.authors, ...res ]})
-      });
-  }
+    .then(res => {
+      this.setState({authors: [...this.state.authors, ...res]})
+    })
+  };
 
   render() {
     return (

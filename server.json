@@ -1,34 +1,48 @@
 {
   "data": [
     {
-      "id": 1,
-      "name": "Marina",
+      "name": "Guilherme Girardi",
       "book": "ReactJS",
-      "price": "2222"
+      "price": "1111",
+      "validation": {
+        "isValid": true,
+        "name": {
+          "isInvalid": false,
+          "message": ""
+        },
+        "book": {
+          "isInvalid": false,
+          "message": ""
+        },
+        "price": {
+          "isInvalid": false,
+          "message": ""
+        }
+      },
+      "ignore_whitespace": false,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Antonio",
-      "book": "MongoDB",
-      "price": "3333"
-    },
-    {
-      "id": 3,
-      "name": "Rodrigo",
-      "book": "VanillaJS",
-      "price": "5555"
-    },
-    {
-      "id": 4,
-      "name": "Dalva",
-      "book": "CSS",
-      "price": "6666"
-    },
-    {
-      "id": 4,
-      "name": "Raisa",
-      "book": "React Native",
-      "price": "4545"
+      "name": "Lua Girardi",
+      "book": "test",
+      "price": "100",
+      "validation": {
+        "isValid": true,
+        "name": {
+          "isInvalid": false,
+          "message": ""
+        },
+        "book": {
+          "isInvalid": false,
+          "message": ""
+        },
+        "price": {
+          "isInvalid": false,
+          "message": ""
+        }
+      },
+      "ignore_whitespace": false,
+      "id": 2
     }
   ]
 }

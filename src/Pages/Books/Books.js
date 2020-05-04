@@ -1,21 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import Header from './Header';
-import DataBooks from './DataBooks';
-import ApiService from './ApiService';
+import Header from '../../Components/Header/Header';
+import DataList from '../../Components/DataList/DataList';
+import ApiService from '../../API/ApiService';
 
 class Books extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      authors: [],
+      books: [],
     };
   };
 
   componentDidMount() {
     ApiService.AuthorList()
       .then(res => {
-        this.setState({authors: [...this.state.authors, ...res]})
+        this.setState({books: [...this.state.books, ...res]})
       });
   };
 
@@ -25,7 +25,7 @@ class Books extends Component {
         <Header />
         <div className='container'>
           <h1>Books</h1>
-          <DataBooks data={this.state.authors} />
+          <DataList data={this.state.books} title={this.state.title} column={['book']}/>
         </div>
       </Fragment>
     )
